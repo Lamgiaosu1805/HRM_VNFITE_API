@@ -1,6 +1,6 @@
-const { default: axios } = require("axios")
 const AccountModel = require("../models/AccountModel")
 const bcrypt = require('bcrypt');
+const { SuccessResponse, FailureResponse } = require("../utils/ResponseRequest");
 
 const AuthController = {
     createAccoutAdmin: async (req, res, next) => {
@@ -8,10 +8,7 @@ const AuthController = {
         try {
             const user = await AccountModel.findOne({username: body.username})
             if(user) {
-                res.json({
-                    status: false,
-                    message: "username đã tồn tại"
-                })
+                res.json(FailureResponse("01"))
             }
             else {
                 const salt = await bcrypt.genSalt(10)
@@ -22,15 +19,11 @@ const AuthController = {
                     roleId: 1
                 })
                 await newAccount.save()
-                res.json({
-                    status: true
-                })
+                res.json(SuccessResponse())
             }
         } catch (error) {
             console.log(error)
-            res.json({
-                status: false
-            })
+            res.json(FailureResponse("02", error))
         }
     }
 }
