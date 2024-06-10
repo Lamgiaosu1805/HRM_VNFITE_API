@@ -1,6 +1,6 @@
 const AccountModel = require("../models/AccountModel")
 const bcrypt = require('bcrypt');
-const { SuccessResponse, FailureResponse } = require("../utils/ResponseRequest");
+const { SuccessResponse, FailureResponse } = require("../common/ResponseRequest");
 
 const AuthController = {
     createAccoutAdmin: async (req, res, next) => {
@@ -25,6 +25,7 @@ const AuthController = {
             console.log(error)
             res.json(FailureResponse("02", error))
         }
-    }
+    },
+    
 }
 module.exports = AuthController
