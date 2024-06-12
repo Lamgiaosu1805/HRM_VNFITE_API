@@ -2,6 +2,7 @@ const AccountModel = require("../models/AccountModel")
 const bcrypt = require('bcrypt');
 const { SuccessResponse, FailureResponse } = require("../common/ResponseRequest");
 const jwt = require('jsonwebtoken');
+const ExcelJS = require('exceljs');
 
 const genAccessToken = (user) => {
     return jwt.sign({
@@ -64,6 +65,39 @@ const AuthController = {
         } catch (error) {
             console.log(error)
             res.json(FailureResponse("06", error))
+        }
+    },
+    test: async (req, res, next) => {
+        if (!req.file) {
+            return res.status(400).send('No file uploaded.');
+        }
+        try {
+            const workbook = new ExcelJS.Workbook();
+            await workbook.xlsx.load(req.file.buffer);
+    
+            const worksheet = workbook.getWorksheet(1); // Lấy worksheet đầu tiên
+            let headers = [];
+            let data = [];
+
+            worksheet.eachRow((row, rowNumber) => {
+                if (rowNumber === 1) {
+                    headers = row.values.slice(1); // Bỏ giá trị đầu tiên vì nó là null
+                } else {
+                    let rowData = {};
+                    row.values.slice(1).forEach((value, index) => {
+                        rowData[headers[index]] = value;
+                    });
+                    data.push(rowData);
+                }
+            });
+    
+            res.json({
+                total: data.length,
+                data: data
+            });
+        } catch (err) {
+            console.log(err)
+            res.status(500).send('Error reading Excel file.');
         }
     }
     
