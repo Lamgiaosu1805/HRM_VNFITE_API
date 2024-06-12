@@ -13,7 +13,7 @@ const AccountController = {
                 const newPassword = generateRandomPassword()
                 const salt = await bcrypt.genSalt(10)
                 const hashedPassword = await bcrypt.hash(newPassword, salt)
-                await account.updateOne({username: body.username}, {password: hashedPassword})
+                await account.updateOne({password: hashedPassword})
                 res.json(SuccessResponse({
                     newPassword: newPassword
                 }))
