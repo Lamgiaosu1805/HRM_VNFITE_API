@@ -38,7 +38,7 @@ const auth = {
         })
     },
 
-    verifyTokenForAdminXuDoan: (req, res, next) => {
+    verifyTokenForAdminCompany: (req, res, next) => {
         auth.verifyToken(req, res, () => {
             if(req.user.roleId <= 3 ) {
                 next();
