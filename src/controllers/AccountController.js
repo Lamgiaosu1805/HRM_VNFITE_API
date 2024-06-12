@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 const AccountController = {
     resetPasswordAdminCompany: async (req, res, next) => {
         const body = req.body
-        // console.log(body)
         try {
             const account = await AccountModel.findOne({username: body.username})
             if(account) {
