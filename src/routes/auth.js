@@ -5,6 +5,6 @@ const router = express.Router()
 
 // router.post('/createAdmin', AuthController.createAccoutAdmin)
 router.post('/signIn', AuthController.signIn)
-router.post('/upload', upload.single('file'), AuthController.test)
+// router.post('/upload', upload.single('file'), AuthController.test)
 
 module.exports = router;
