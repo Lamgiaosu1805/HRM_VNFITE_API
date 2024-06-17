@@ -5,7 +5,7 @@ const NguoiPhuThuoc = new Schema({
     fullname: {type: String, required: true},
     dateOfBirth: {type: Date},
     quanHeVoiNhanVien: {type: String, required: true},
-    idNhanVien: {type: String, required: true}
+    idEmployee: {type: String, required: true}
 },{
     timestamps: true
 })

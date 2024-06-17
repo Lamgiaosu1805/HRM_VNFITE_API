@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 const Company = new Schema({
     name: { type: String, required: true},
     shortName: {type: String, required: true},
-    logo: {type: String}
+    logo: {type: String, default: ""},
+    address: {type: String, default: ""},
 },{
     timestamps: true
 })
