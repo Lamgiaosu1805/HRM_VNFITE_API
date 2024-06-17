@@ -14,7 +14,8 @@ const CompanyController = {
             const newCompany = new CompanyModel({
                 name: body.name,
                 logo: body.logo,
-                shortName: body.shortName
+                shortName: body.shortName,
+                address: body.address
             })
             const dataCompanyNew = await newCompany.save({session})
             const numberCount = await CompanyModel.countDocuments()
