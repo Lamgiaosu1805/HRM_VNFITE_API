@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const PhongBan = new Schema({
     name: {type: String, required: true},
-    idDonVi: {type: String, required: true}
+    idCompany: {type: String, required: true}
 },{
     timestamps: true
 })

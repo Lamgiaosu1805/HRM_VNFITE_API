@@ -12,7 +12,8 @@ const Account = new Schema({
     isResetPassword: {type: Boolean, default: true},
     isActive: {type: Boolean, default: true},
     idCompany: {type: String, default: ""},
-    companyName: {type: String, default: ""}
+    companyName: {type: String, default: ""},
+    idEmployee: {type: String, default: ""}
 },{
     timestamps: true
 })

@@ -25,6 +25,7 @@ const Employee = new Schema({
     //     },
     //     ....
     // ]
+    nguoiPhuThuoc: {type: Array, default: []}
 },{
     timestamps: true
 })
