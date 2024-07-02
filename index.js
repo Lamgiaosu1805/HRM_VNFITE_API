@@ -16,7 +16,7 @@ app.use(express.urlencoded({
 }))
 
 //connectdb
-db.connect()
+// db.connect()
 
 //routing
 route(app);
