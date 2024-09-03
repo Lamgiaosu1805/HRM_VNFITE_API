@@ -16,11 +16,11 @@ app.use(express.urlencoded({
 }))
 
 //connectdb
-db.connect()
+// db.connect()
 
 //routing
 route(app);
 
 app.listen(port, () => {
-  console.log(`App server listening on port ${port}`)
+  console.log(`App server listening on port ${process.env.PORT || 3000}`)
 })
